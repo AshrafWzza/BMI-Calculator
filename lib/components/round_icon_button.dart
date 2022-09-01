@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class RounIconbButton extends StatelessWidget {
-  RounIconbButton({required this.icon, required this.onPressed});
+class RoundIconButton extends StatelessWidget {
+  const RoundIconButton({Key? key, required this.icon, required this.onPressed})
+      : super(key: key);
   final IconData icon;
   final VoidCallback onPressed; //instead of Function
   @override
@@ -10,12 +11,12 @@ class RounIconbButton extends StatelessWidget {
       child: Icon(icon),
       onPressed: onPressed,
       // elevation: 6.0,
-      constraints: BoxConstraints.tightFor(
+      constraints: const BoxConstraints.tightFor(
         width: 56.0,
         height: 56.0,
       ),
-      shape: CircleBorder(), // default RoundedRectangleBorder()
-      fillColor: Color(0xFF4CF5E),
+      shape: const CircleBorder(), // default RoundedRectangleBorder()
+      fillColor: const Color(0x0ff4cf5e),
     );
   }
 }

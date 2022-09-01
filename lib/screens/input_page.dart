@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/components/reusable_card.dart';
-import 'package:bmi_calculator/constatnts.dart';
+import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/components/icon_content.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:bmi_calculator/components/bottom_button.dart';
@@ -11,6 +11,8 @@ import 'package:bmi_calculator/calculator_brain.dart';
 enum Gender { male, female, none }
 
 class InputPage extends StatefulWidget {
+  const InputPage({Key? key}) : super(key: key);
+
   @override
   _InputPageState createState() => _InputPageState();
 }
@@ -45,10 +47,11 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('BMI CALCULATOR')),
+        title: const Center(child: Text('BMI CALCULATOR')),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
             child: Row(
@@ -60,7 +63,7 @@ class _InputPageState extends State<InputPage> {
                           selectedGender = Gender.male;
                         });
                       },
-                      cardChild: IconContent(
+                      cardChild: const IconContent(
                         icon: FontAwesomeIcons.mars,
                         label: 'Male',
                       ),
@@ -72,10 +75,10 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableContainer(
                       onPress: () {
                         setState(() {
-                          selectedGender = Gender.male;
+                          selectedGender = Gender.female;
                         });
                       },
-                      cardChild: IconContent(
+                      cardChild: const IconContent(
                         icon: FontAwesomeIcons.venus,
                         label: 'Female',
                       ),
@@ -92,7 +95,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Height',
                     style: kLabelTextStyle,
                   ),
@@ -105,7 +108,7 @@ class _InputPageState extends State<InputPage> {
                         height.toString(),
                         style: kNumberTextStyle,
                       ),
-                      Text(
+                      const Text(
                         'cm',
                         style: kLabelTextStyle,
                       ),
@@ -114,13 +117,14 @@ class _InputPageState extends State<InputPage> {
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
                         activeTrackColor: Colors.white,
-                        inactiveTrackColor: Color(0xFF8D8E98),
-                        thumbColor: Color(0xFFEB1555),
-                        overlayColor: Color(0x25EB1555), //25-->Opacity 16%
-                        thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                        inactiveTrackColor: const Color(0xFF8D8E98),
+                        thumbColor: const Color(0xFFEB1555),
+                        overlayColor:
+                            const Color(0x25EB1555), //25-->Opacity 16%
+                        thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 15.0),
                         overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 30.0)),
+                            const RoundSliderOverlayShape(overlayRadius: 30.0)),
                     child: Slider(
                         value: height.toDouble(),
                         min: 120.0,
@@ -146,7 +150,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Weight',
                           style: kLabelTextStyle,
                         ),
@@ -157,7 +161,7 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            RounIconbButton(
+                            RoundIconButton(
                               icon: FontAwesomeIcons.minus,
                               onPressed: () {
                                 setState(() {
@@ -165,10 +169,10 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
-                            RounIconbButton(
+                            RoundIconButton(
                               icon: FontAwesomeIcons.plus,
                               onPressed: () {
                                 setState(() {
@@ -188,7 +192,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'Age',
                           style: kLabelTextStyle,
                         ),
@@ -199,7 +203,7 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            RounIconbButton(
+                            RoundIconButton(
                               icon: FontAwesomeIcons.minus,
                               onPressed: () {
                                 setState(() {
@@ -207,10 +211,10 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
-                            RounIconbButton(
+                            RoundIconButton(
                               icon: FontAwesomeIcons.plus,
                               onPressed: () {
                                 setState(() {
@@ -237,7 +241,7 @@ class _InputPageState extends State<InputPage> {
                   MaterialPageRoute(
                       builder: (context) => ResultPage(
                             bmiResult: calc.calculateBMI(),
-                            resultText: calc.getREsult(),
+                            resultText: calc.getResult(),
                             interpretation: calc.getInterpretation(),
                           )));
             },
